@@ -1,0 +1,60 @@
+[
+  {
+    "id": "product_list",
+    "name": "List products",
+    "method": "GET",
+    "path": "/api/v1/products",
+    "path_params": {},
+    "query_params": {
+      "category": {"type": "string", "required": false},
+      "limit": {"type": "integer", "required": false}
+    },
+    "request_body": null,
+    "responses": {
+      "200": {
+        "content_type": "application/json",
+        "schema": {
+          "properties": {
+            "items": {"type": "array"},
+            "total": {"type": "integer"}
+          }
+        }
+      }
+    },
+    "response_time": {
+      "p50_ms": 90,
+      "p95_ms": 210,
+      "p99_ms": 450
+    },
+    "tags": ["products"]
+  },
+  {
+    "id": "product_detail",
+    "name": "Get product detail",
+    "method": "GET",
+    "path": "/api/v1/products/{sku}",
+    "path_params": {
+      "sku": {"type": "string", "required": true}
+    },
+    "query_params": {},
+    "request_body": null,
+    "responses": {
+      "200": {
+        "content_type": "application/json",
+        "schema": {
+          "properties": {
+            "sku": {"type": "string"},
+            "title": {"type": "string"},
+            "price": {"type": "number"}
+          }
+        }
+      }
+    },
+    "response_time": {
+      "p50_ms": 120,
+      "p95_ms": 260,
+      "p99_ms": 500
+    },
+    "tags": ["products"]
+  }
+]

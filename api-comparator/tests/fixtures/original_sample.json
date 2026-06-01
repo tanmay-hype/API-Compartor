@@ -1,0 +1,14 @@
+[
+  {
+    "id": "user_get",
+    "name": "Get user",
+    "method": "GET",
+    "path": "/api/v1/users/{id}",
+    "path_params": {"id": {"type": "string", "required": true}},
+    "query_params": {},
+    "request_body": null,
+    "responses": {"200": {"content_type": "application/json", "schema": {"properties": {"id": {"type": "string"}, "name": {"type": "string"}}}}},
+    "response_time": {"p50_ms": 100, "p95_ms": 300, "p99_ms": 800},
+    "tags": ["users"]
+  }
+]

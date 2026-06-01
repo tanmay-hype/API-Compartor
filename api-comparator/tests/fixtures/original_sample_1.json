@@ -1,0 +1,70 @@
+[
+  {
+    "id": "user_get",
+    "name": "Get user profile",
+    "method": "GET",
+    "path": "/api/v1/users/{id}",
+    "path_params": {
+      "id": {"type": "string", "required": true}
+    },
+    "query_params": {
+      "includeInactive": {"type": "boolean", "required": false}
+    },
+    "request_body": null,
+    "responses": {
+      "200": {
+        "content_type": "application/json",
+        "schema": {
+          "properties": {
+            "id": {"type": "string"},
+            "name": {"type": "string"},
+            "email": {"type": "string"}
+          }
+        }
+      }
+    },
+    "response_time": {
+      "p50_ms": 100,
+      "p95_ms": 240,
+      "p99_ms": 500
+    },
+    "tags": ["users"]
+  },
+  {
+    "id": "user_create",
+    "name": "Create user",
+    "method": "POST",
+    "path": "/api/v1/users",
+    "path_params": {},
+    "query_params": {},
+    "request_body": {
+      "content_type": "application/json",
+      "schema": {
+        "required": ["name", "email"],
+        "properties": {
+          "name": {"type": "string"},
+          "email": {"type": "string"},
+          "role": {"type": "string", "format": "enum"}
+        }
+      }
+    },
+    "responses": {
+      "201": {
+        "content_type": "application/json",
+        "schema": {
+          "properties": {
+            "id": {"type": "string"},
+            "name": {"type": "string"},
+            "email": {"type": "string"}
+          }
+        }
+      }
+    },
+    "response_time": {
+      "p50_ms": 180,
+      "p95_ms": 320,
+      "p99_ms": 700
+    },
+    "tags": ["users"]
+  }
+]

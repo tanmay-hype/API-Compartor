@@ -1,0 +1,82 @@
+[
+  {
+    "id": "user_get",
+    "name": "Get user profile",
+    "method": "GET",
+    "path": "/api/v1/users/{id}",
+    "path_params": {
+      "id": {"type": "string", "required": true}
+    },
+    "query_params": {
+      "includeInactive": {"type": "boolean", "required": false},
+      "fields": {"type": "string", "required": false}
+    },
+    "request_body": null,
+    "responses": {
+      "200": {
+        "content_type": "application/json",
+        "schema": {
+          "properties": {
+            "id": {"type": "string"},
+            "fullName": {"type": "string"},
+            "email": {"type": "string"},
+            "status": {"type": "string"}
+          }
+        }
+      }
+    },
+    "response_time": {
+      "p50_ms": 145,
+      "p95_ms": 340,
+      "p99_ms": 760
+    },
+    "tags": ["users"]
+  },
+  {
+    "id": "user_create",
+    "name": "Create user",
+    "method": "POST",
+    "path": "/api/v1/users",
+    "path_params": {},
+    "query_params": {},
+    "request_body": {
+      "content_type": "application/json",
+      "schema": {
+        "required": ["name", "email", "phone"],
+        "properties": {
+          "name": {"type": "string"},
+          "email": {"type": "string"},
+          "phone": {"type": "string"},
+          "role": {"type": "string", "format": "enum"}
+        }
+      }
+    },
+    "responses": {
+      "201": {
+        "content_type": "application/json",
+        "schema": {
+          "properties": {
+            "id": {"type": "string"},
+            "name": {"type": "string"},
+            "email": {"type": "string"},
+            "createdAt": {"type": "string", "format": "date-time"}
+          }
+        }
+      },
+      "400": {
+        "content_type": "application/json",
+        "schema": {
+          "properties": {
+            "error": {"type": "string"}
+          }
+        }
+      }
+    },
+    "response_time": {
+      "p50_ms": 220,
+      "p95_ms": 420,
+      "p99_ms": 820
+    },
+    "tags": ["users"]
+  }
+]
